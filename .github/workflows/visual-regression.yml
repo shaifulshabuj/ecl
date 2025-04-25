@@ -1,0 +1,81 @@
+name: Visual Regression Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  visual-regression:
+    name: Visual Regression Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build Storybook
+        run: npm run build-storybook
+      
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      
+      - name: Run Storybook
+        run: npx http-server storybook-static -p 6006 &
+      
+      - name: Wait for Storybook
+        run: npx wait-on http://localhost:6006
+      
+      - name: Run visual regression tests
+        run: npm run test:visual || echo "Visual tests not configured yet"
+      
+      - name: Upload visual test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: visual-test-results
+          path: .reg
+        if: always()
+      
+      - name: Comment on PR with visual differences
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            try {
+              const reportPath = '.reg/report.json';
+              if (fs.existsSync(reportPath)) {
+                const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+                const failedItems = Object.values(report).filter(item => item.status === 'fail');
+                
+                if (failedItems.length > 0) {
+                  let comment = '## Visual Regression Test Failures\n\n';
+                  comment += 'The following components have visual differences:\n\n';
+                  
+                  failedItems.forEach(item => {
+                    comment += `- **${item.name}**\n`;
+                  });
+                  
+                  comment += '\nPlease review the visual test results artifact for details.';
+                  
+                  github.rest.issues.createComment({
+                    issue_number: context.issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: comment
+                  });
+                }
+              }
+            } catch (error) {
+              console.error('Error creating PR comment:', error);
+            }

@@ -1,0 +1,20 @@
+[
+  {
+    "path": "dist/index.esm.js",
+    "limit": "100 KB",
+    "webpack": false,
+    "running": false
+  },
+  {
+    "path": "dist/index.cjs.js",
+    "limit": "120 KB",
+    "webpack": false,
+    "running": false
+  },
+  {
+    "path": "dist/styles.css",
+    "limit": "30 KB",
+    "webpack": false,
+    "running": false
+  }
+]

@@ -1,0 +1,67 @@
+name: Bundle Size Monitoring
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  bundle-size:
+    name: Monitor Bundle Size
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build package
+        run: npm run build
+      
+      - name: Setup size-limit
+        run: npm install -g size-limit
+      
+      - name: Check bundle size
+        id: size
+        run: |
+          SIZE=$(du -sh dist/index.esm.js | cut -f1)
+          GZIP_SIZE=$(gzip -c dist/index.esm.js | wc -c | numfmt --to=iec)
+          echo "size=$SIZE" >> $GITHUB_OUTPUT
+          echo "gzip_size=$GZIP_SIZE" >> $GITHUB_OUTPUT
+      
+      - name: Create bundle size comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const size = '${{ steps.size.outputs.size }}';
+            const gzipSize = '${{ steps.size.outputs.gzip_size }}';
+            
+            const comment = `## Bundle Size Info
+            
+            | File | Size | Gzipped |
+            | ---- | ---- | ------- |
+            | \`dist/index.esm.js\` | ${size} | ${gzipSize} |
+            
+            ${size > '100K' ? '⚠️ Bundle size is getting large!' : '✅ Bundle size is acceptable.'}`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+      
+      - name: Upload bundle stats
+        uses: actions/upload-artifact@v3
+        with:
+          name: bundle-stats
+          path: dist/*.js

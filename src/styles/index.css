@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Theme: Light (default) */
+    
+    /* Primary Colors */
+    --ecl-primary-50: #f0f9ff;
+    --ecl-primary-100: #e0f2fe;
+    --ecl-primary-200: #bae6fd;
+    --ecl-primary-300: #7dd3fc;
+    --ecl-primary-400: #38bdf8;
+    --ecl-primary-500: #0ea5e9;
+    --ecl-primary-600: #0284c7;
+    --ecl-primary-700: #0369a1;
+    --ecl-primary-800: #075985;
+    --ecl-primary-900: #0c4a6e;
+    
+    /* Secondary Colors */
+    --ecl-secondary-50: #f5f3ff;
+    --ecl-secondary-100: #ede9fe;
+    --ecl-secondary-200: #ddd6fe;
+    --ecl-secondary-300: #c4b5fd;
+    --ecl-secondary-400: #a78bfa;
+    --ecl-secondary-500: #8b5cf6;
+    --ecl-secondary-600: #7c3aed;
+    --ecl-secondary-700: #6d28d9;
+    --ecl-secondary-800: #5b21b6;
+    --ecl-secondary-900: #4c1d95;
+    
+    /* Semantic Colors */
+    --ecl-success-50: #f0fdf4;
+    --ecl-success-100: #dcfce7;
+    --ecl-success-500: #22c55e;
+    --ecl-success-700: #15803d;
+    
+    --ecl-warning-50: #fffbeb;
+    --ecl-warning-100: #fef3c7;
+    --ecl-warning-500: #f59e0b;
+    --ecl-warning-700: #b45309;
+    
+    --ecl-error-50: #fef2f2;
+    --ecl-error-100: #fee2e2;
+    --ecl-error-500: #ef4444;
+    --ecl-error-700: #b91c1c;
+    
+    --ecl-info-50: #eff6ff;
+    --ecl-info-100: #dbeafe;
+    --ecl-info-500: #3b82f6;
+    --ecl-info-700: #1d4ed8;
+    
+    /* Neutral Colors */
+    --ecl-neutral-50: #f9fafb;
+    --ecl-neutral-100: #f3f4f6;
+    --ecl-neutral-200: #e5e7eb;
+    --ecl-neutral-300: #d1d5db;
+    --ecl-neutral-400: #9ca3af;
+    --ecl-neutral-500: #6b7280;
+    --ecl-neutral-600: #4b5563;
+    --ecl-neutral-700: #374151;
+    --ecl-neutral-800: #1f2937;
+    --ecl-neutral-900: #111827;
+    
+    /* Spacing */
+    --ecl-spacing-xs: 0.25rem; /* 4px */
+    --ecl-spacing-sm: 0.5rem;  /* 8px */
+    --ecl-spacing-md: 1rem;    /* 16px */
+    --ecl-spacing-lg: 1.5rem;  /* 24px */
+    --ecl-spacing-xl: 2rem;    /* 32px */
+    --ecl-spacing-2xl: 3rem;   /* 48px */
+    --ecl-spacing-3xl: 4rem;   /* 64px */
+    
+    /* Border Radius */
+    --ecl-radius-xs: 0.125rem; /* 2px */
+    --ecl-radius-sm: 0.25rem;  /* 4px */
+    --ecl-radius-md: 0.375rem; /* 6px */
+    --ecl-radius-lg: 0.5rem;   /* 8px */
+    --ecl-radius-xl: 1rem;     /* 16px */
+    
+    /* Shadows */
+    --ecl-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --ecl-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --ecl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --ecl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --ecl-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Typography */
+    --ecl-font-family-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --ecl-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    
+    --ecl-font-size-xs: 0.75rem;    /* 12px */
+    --ecl-font-size-sm: 0.875rem;   /* 14px */
+    --ecl-font-size-base: 1rem;     /* 16px */
+    --ecl-font-size-lg: 1.125rem;   /* 18px */
+    --ecl-font-size-xl: 1.25rem;    /* 20px */
+    --ecl-font-size-2xl: 1.5rem;    /* 24px */
+    --ecl-font-size-3xl: 1.875rem;  /* 30px */
+    
+    --ecl-line-height-xs: 1rem;     /* 16px */
+    --ecl-line-height-sm: 1.25rem;  /* 20px */
+    --ecl-line-height-base: 1.5rem; /* 24px */
+    --ecl-line-height-lg: 1.75rem;  /* 28px */
+    --ecl-line-height-xl: 1.75rem;  /* 28px */
+    --ecl-line-height-2xl: 2rem;    /* 32px */
+    --ecl-line-height-3xl: 2.25rem; /* 36px */
+    
+    /* Focus ring */
+    --ecl-focus-ring: 0 0 0 2px var(--ecl-primary-200);
+  }
+  
+  /* Theme: Dark */
+  .ecl-theme-dark {
+    /* Primary Colors - adjusted for dark mode */
+    --ecl-primary-50: #082f49;
+    --ecl-primary-100: #0c4a6e;
+    --ecl-primary-200: #075985;
+    --ecl-primary-300: #0369a1;
+    --ecl-primary-400: #0284c7;
+    --ecl-primary-500: #0ea5e9;
+    --ecl-primary-600: #38bdf8;
+    --ecl-primary-700: #7dd3fc;
+    --ecl-primary-800: #bae6fd;
+    --ecl-primary-900: #e0f2fe;
+    
+    /* Secondary Colors - adjusted for dark mode */
+    --ecl-secondary-50: #4c1d95;
+    --ecl-secondary-100: #5b21b6;
+    --ecl-secondary-200: #6d28d9;
+    --ecl-secondary-300: #7c3aed;
+    --ecl-secondary-400: #8b5cf6;
+    --ecl-secondary-500: #a78bfa;
+    --ecl-secondary-600: #c4b5fd;
+    --ecl-secondary-700: #ddd6fe;
+    --ecl-secondary-800: #ede9fe;
+    --ecl-secondary-900: #f5f3ff;
+    
+    /* Neutral Colors - adjusted for dark mode */
+    --ecl-neutral-50: #1f2937;
+    --ecl-neutral-100: #374151;
+    --ecl-neutral-200: #4b5563;
+    --ecl-neutral-300: #6b7280;
+    --ecl-neutral-400: #9ca3af;
+    --ecl-neutral-500: #d1d5db;
+    --ecl-neutral-600: #e5e7eb;
+    --ecl-neutral-700: #f3f4f6;
+    --ecl-neutral-800: #f9fafb;
+    --ecl-neutral-900: #ffffff;
+    
+    /* Semantic colors - adjusted for dark mode */
+    --ecl-success-50: #052e16;
+    --ecl-success-100: #15803d;
+    --ecl-success-500: #22c55e;
+    --ecl-success-700: #dcfce7;
+    
+    --ecl-warning-50: #451a03;
+    --ecl-warning-100: #b45309;
+    --ecl-warning-500: #f59e0b;
+    --ecl-warning-700: #fef3c7;
+    
+    --ecl-error-50: #450a0a;
+    --ecl-error-100: #b91c1c;
+    --ecl-error-500: #ef4444;
+    --ecl-error-700: #fee2e2;
+    
+    --ecl-info-50: #172554;
+    --ecl-info-100: #1d4ed8;
+    --ecl-info-500: #3b82f6;
+    --ecl-info-700: #dbeafe;
+    
+    /* Focus ring - adjusted for dark mode */
+    --ecl-focus-ring: 0 0 0 2px var(--ecl-primary-600);
+  }
+  
+  /* Theme: High Contrast */
+  .ecl-theme-high-contrast {
+    /* Primary Colors - higher contrast for accessibility */
+    --ecl-primary-500: #0369a1;
+    --ecl-primary-600: #075985;
+    
+    /* Secondary Colors - higher contrast for accessibility */
+    --ecl-secondary-500: #6d28d9;
+    --ecl-secondary-600: #5b21b6;
+    
+    /* Neutral Colors - higher contrast for accessibility */
+    --ecl-neutral-400: #6b7280;
+    --ecl-neutral-500: #4b5563;
+    --ecl-neutral-600: #374151;
+    
+    /* Semantic colors - higher contrast for accessibility */
+    --ecl-success-500: #15803d;
+    --ecl-warning-500: #b45309;
+    --ecl-error-500: #b91c1c;
+    --ecl-info-500: #1d4ed8;
+    
+    /* Focus ring - higher contrast for accessibility */
+    --ecl-focus-ring: 0 0 0 3px var(--ecl-primary-500);
+  }
+  
+  /* Base styles */
+  body {
+    @apply text-neutral-900 bg-neutral-50;
+    font-family: var(--ecl-font-family-sans);
+    font-size: var(--ecl-font-size-base);
+    line-height: var(--ecl-line-height-base);
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: none;
+    box-shadow: var(--ecl-focus-ring);
+  }
+}
+
+/* Component-specific styles can be added here */
+@layer components {
+  /* Example button base styles */
+  .ecl-btn {
+    @apply inline-flex items-center justify-center;
+    @apply rounded-md px-4 py-2;
+    @apply font-medium;
+    @apply transition-colors duration-200;
+    @apply focus:outline-none focus-visible:ring-2;
+  }
+  
+  /* Button variants */
+  .ecl-btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700;
+  }
+  
+  .ecl-btn-secondary {
+    @apply bg-secondary-600 text-white hover:bg-secondary-700;
+  }
+  
+  .ecl-btn-outline {
+    @apply border border-neutral-300 bg-transparent text-neutral-700;
+    @apply hover:bg-neutral-50;
+  }
+  
+  /* Button sizes */
+  .ecl-btn-sm {
+    @apply text-sm px-3 py-1;
+  }
+  
+  .ecl-btn-lg {
+    @apply text-lg px-5 py-3;
+  }
+}
+
+/* Utility classes specific to our library */
+@layer utilities {
+  .ecl-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}

@@ -1,0 +1,53 @@
+services:
+  ecl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deps # Use the deps stage which has all dependencies installed
+    container_name: ecl
+    ports:
+      - "6006:6006" # Storybook
+      - "3000:3000" # For possible app
+    volumes:
+      # Mount source code for development (hot reloading)
+      - ./:/app
+      # Don't mount node_modules from host, use the one in the container
+      - /app/node_modules
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    # Run npm install first to ensure all dependencies are available, then start Storybook
+    command: sh -c "npm install && npm run storybook"
+    
+  # Separate service for testing that runs as root to avoid permission issues
+  ecl-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder # Use the builder stage which has all dependencies
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    user: root # Run as root to avoid permission issues
+
+  # Add a production service that uses the built files
+  ecl-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: ecl-prod
+    ports:
+      - "8080:6006" # Expose Storybook on a different port
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    command: npx serve storybook-static -p 6006
+    profiles:
+      - prod # Only run when specifically requested

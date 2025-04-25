@@ -1,0 +1,57 @@
+# Source files
+src/
+scripts/
+.storybook/
+storybook-static/
+
+# Config files
+.eslintrc
+.eslintignore
+.prettierrc
+.prettierignore
+.babelrc
+jest.config.js
+jest.setup.js
+tsconfig.json
+tsconfig.build.json
+rollup.config.js
+vite.config.js
+tailwind.config.js
+postcss.config.js
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Test files
+__tests__/
+__mocks__/
+*.test.tsx
+*.test.ts
+*.spec.tsx
+*.spec.ts
+*.stories.tsx
+*.stories.mdx
+coverage/
+
+# Development files
+.github/
+.vscode/
+.idea/
+node_modules/
+.env
+.env.*
+*.log
+.DS_Store
+
+# Documentation
+docs/
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+CHANGELOG.md
+PROJECT_PLAN.md
+TASKS.md
+
+# Build analysis
+bundle-analysis-*.html
