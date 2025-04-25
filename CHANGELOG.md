@@ -35,5 +35,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial public release of the Enterprise Component Library
 
-[Unreleased]: https://github.com/yourorg/ecl/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/yourorg/ecl/releases/tag/v1.0.0
+[Unreleased]: https://github.com/shaifulshabuj/ecl/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/shaifulshabuj/ecl/releases/tag/v1.0.0

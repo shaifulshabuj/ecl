@@ -4,7 +4,7 @@ This document provides information about the npm package configuration for the E
 
 ## Package Information
 
-- **Package Name**: `@yourorg/ecl`
+- **Package Name**: `@shaifulshabuj/ecl`
 - **Version**: 1.0.0
 - **Description**: Enterprise Component Library - A scalable, reusable component library
 
@@ -13,13 +13,13 @@ This document provides information about the npm package configuration for the E
 Install the ECL package using npm:
 
 ```bash
-npm install @yourorg/ecl
+npm install @shaifulshabuj/ecl
 ```
 
 Or using yarn:
 
 ```bash
-yarn add @yourorg/ecl
+yarn add @shaifulshabuj/ecl
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ yarn add @yourorg/ecl
 You can import individual components from the library:
 
 ```jsx
-import { Button, Card, Alert } from '@yourorg/ecl';
+import { Button, Card, Alert } from '@shaifulshabuj/ecl';
 
 function MyComponent() {
   return (
@@ -53,7 +53,7 @@ The library includes pre-built CSS that you can import in your application:
 
 ```jsx
 // In your app's entry file (e.g., index.js or App.js)
-import '@yourorg/ecl/dist/styles.css';
+import '@shaifulshabuj/ecl/dist/styles.css';
 ```
 
 If you're using a CSS-in-JS solution, you don't need to import the CSS file.
@@ -115,11 +115,11 @@ The ECL follows Semantic Versioning (SemVer):
 If you need to unpublish a version (within 72 hours of publishing):
 
 ```bash
-npm unpublish @yourorg/ecl@<version>
+npm unpublish @shaifulshabuj/ecl@<version>
 ```
 
 For deprecating a version:
 
 ```bash
-npm deprecate @yourorg/ecl@<version> "Reason for deprecation"
+npm deprecate @shaifulshabuj/ecl@<version> "Reason for deprecation"
 ```

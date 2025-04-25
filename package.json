@@ -1,5 +1,5 @@
 {
-  "name": "@yourorg/ecl",
+  "name": "@shaifulshabuj/ecl",
   "version": "1.0.0",
   "description": "Enterprise Component Library - A scalable, reusable component library",
   "publishConfig": {
@@ -59,12 +59,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourorg/ecl.git"
+    "url": "https://github.com/shaifulshabuj/ecl.git"
   },
   "bugs": {
-    "url": "https://github.com/yourorg/ecl/issues"
+    "url": "https://github.com/shaifulshabuj/ecl/issues"
   },
-  "homepage": "https://github.com/yourorg/ecl#readme",
+  "homepage": "https://github.com/shaifulshabuj/ecl#readme",
   "files": [
     "dist",
     "LICENSE",

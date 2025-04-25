@@ -21,20 +21,20 @@ A scalable, reusable component library built with React, TypeScript, TailwindCSS
 Install the ECL package in your project:
 
 ```bash
-npm install @yourorg/ecl
+npm install @shaifulshabuj/ecl
 ```
 
 Or using yarn:
 
 ```bash
-yarn add @yourorg/ecl
+yarn add @shaifulshabuj/ecl
 ```
 
 #### For Library Contributors
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourorg/ecl.git
+git clone https://github.com/shaifulshabuj/ecl.git
 cd ecl
 
 # Install dependencies
@@ -222,9 +222,9 @@ src/
 ## Usage Example
 
 ```tsx
-import { Button, Input } from '@yourorg/ecl';
+import { Button, Input } from '@shaifulshabuj/ecl';
 // Import styles (if not using CSS-in-JS)
-import '@yourorg/ecl/dist/styles.css';
+import '@shaifulshabuj/ecl/dist/styles.css';
 
 function MyForm() {
   return (
